@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N. Saravanan - Bharatiya Janata Party | Puducherry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --saffron-dark: #E67E22;
+            --saffron-light: #FFB366;
+            --white: #FFFFFF;
+            --cream: #FFF8F0;
+            --green: #138808;
+            --green-dark: #0D5C06;
+            --green-light: #1AAD0F;
+            --navy: #000080;
+            --text-dark: #2C3E50;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Decorative Background Elements */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-decoration::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--saffron-light) 0%, transparent 70%);
+            opacity: 0.1;
+            top: -200px;
+            right: -200px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--green-light) 0%, transparent 70%);
+            opacity: 0.1;
+            bottom: -150px;
+            left: -150px;
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.15; }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 4px solid var(--green);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .bjp-flag {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border-radius: 50%;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .bjp-flag-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--saffron) 33.33%, var(--white) 33.33%, var(--white) 66.66%, var(--green) 66.66%);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bjp-lotus {
+            font-size: 28px;
+            color: var(--saffron-dark);
+            position: absolute;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .header-text h1 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--white);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-text p {
+            color: var(--cream);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--green);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            padding-right: 2rem;
+        }
+
+        .hero-content h2 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            color: var(--cream);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-primary {
+            background: var(--white);
+            color: var(--saffron-dark);
+        }
+
+        .cta-primary:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-secondary:hover {
+            background: var(--white);
+            color: var(--saffron-dark);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                justify-content: center;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+        }
+        /* Marquee */
+        .marquee-container {
+            background: linear-gradient(90deg, var(--green) 0%, var(--green-dark) 50%, var(--green) 100%);
+            padding: 1.2rem 0;
+            overflow: hidden;
+            border-top: 3px solid var(--saffron);
+            border-bottom: 3px solid var(--saffron);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .marquee {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 4rem;
+            padding: 0 2rem;
+        }
+
+        .marquee-item {
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .marquee-item i {
+            color: var(--saffron);
+            font-size: 1.6rem;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            border: 3px solid var(--saffron);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--green-light) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            color: var(--saffron-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(19, 136, 8, 0.4);
+        }
+
+        /* Grid Sections */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.5rem;
+            color: var(--saffron-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--saffron) 0%, var(--green) 100%);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 6px 25px var(--shadow);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--saffron) 0%, var(--green) 100%);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px var(--shadow);
+            border-color: var(--saffron);
+        }
+
+        .card h3 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* Social Media Embed Section */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-embed {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 6px 25px var(--shadow);
+            min-height: 500px;
+            border: 2px solid var(--green);
+        }
+
+        .social-embed h3 {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--saffron-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-embed h3 i {
+            color: #1877F2;
+        }
+
+        .fb-placeholder {
+            background: linear-gradient(135deg, #f0f2f5 0%, #e4e6eb 100%);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            color: #65676b;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccd0d5;
+        }
+
+        .fb-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #1877F2;
+        }
+
+        .fb-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1877F2;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--white);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .fb-link:hover {
+            background: #1877F2;
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Chatbot */
+        .chatbot-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            color: var(--white);
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(230, 126, 34, 0.5);
+            transition: all 0.3s;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 30px rgba(230, 126, 34, 0.7);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 380px;
+            height: 550px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 998;
+            overflow: hidden;
+            border: 3px solid var(--saffron);
+        }
+
+        .chatbot-window.active {
+            display: flex;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            color: var(--white);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--green);
+        }
+
+        .chatbot-header h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .chatbot-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 0.75rem;
+            animation: messageIn 0.3s ease-out;
+        }
+
+        @keyframes messageIn {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .message.bot {
+            flex-direction: row;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .message.bot .message-avatar {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            color: var(--white);
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: var(--white);
+        }
+
+        .message-content {
+            padding: 1rem 1.25rem;
+            border-radius: 15px;
+            max-width: 70%;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-content {
+            background: var(--white);
+            color: var(--text-dark);
+            border: 2px solid var(--saffron-light);
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: var(--white);
+        }
+
+        .chatbot-input-container {
+            padding: 1.5rem;
+            background: var(--white);
+            border-top: 2px solid var(--saffron-light);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 0.875rem 1.25rem;
+            border: 2px solid var(--saffron-light);
+            border-radius: 25px;
+            font-size: 1rem;
+            font-family: 'Hind', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chatbot-input:focus {
+            border-color: var(--saffron);
+        }
+
+        .chatbot-send {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            border: none;
+            color: var(--white);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.5);
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h2>Serving Puducherry with Dedication</h2>
+                <p>Working towards a prosperous and developed Puducherry through transparent governance, social welfare, and community empowerment. Together, we build a stronger tomorrow.</p>
+                <div class="hero-cta">
+                    <a href="#goals" class="cta-button cta-primary">
+                        <i class="fas fa-bullseye"></i> Our Vision
+                    </a>
+                    <a href="#contact" class="cta-button cta-secondary">
+                        <i class="fas fa-envelope"></i> Connect With Us
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="man-removebg-preview.png" alt="N. Saravanan">
+            </div>
+        </div>
+    </section>
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--saffron);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--saffron-light);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--saffron-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--saffron);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .grid, .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chatbot-window {
+                width: calc(100% - 40px);
+                right: 20px;
+                left: 20px;
+            }
+
+            .marquee-item {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="bjp-flag">
+                    <div class="bjp-flag-inner">
+                        <i class="fas fa-om bjp-lotus"></i>
+                    </div>
+                </div>
+                <div class="header-text">
+                    <h1>N. SARAVANAN</h1>
+                    <p>Bharatiya Janata Party - Puducherry</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#goals"><i class="fas fa-bullseye"></i> Goals</a></li>
+                    <li><a href="#media"><i class="fas fa-photo-video"></i> Media</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee">
+            <div class="marquee-content">
+                <div class="marquee-item"><i class="fas fa-star"></i> Development for All - Sabka Saath, Sabka Vikas</div>
+                <div class="marquee-item"><i class="fas fa-hands-helping"></i> Empowering Local Communities</div>
+                <div class="marquee-item"><i class="fas fa-heartbeat"></i> Better Healthcare for Puducherry</div>
+                <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Quality Education for Every Child</div>
+                <div class="marquee-item"><i class="fas fa-industry"></i> Job Creation & Economic Growth</div>
+                <div class="marquee-item"><i class="fas fa-leaf"></i> Sustainable Development</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> Safety & Security for All Citizens</div>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <div class="marquee-item"><i class="fas fa-star"></i> Development for All - Sabka Saath, Sabka Vikas</div>
+                <div class="marquee-item"><i class="fas fa-hands-helping"></i> Empowering Local Communities</div>
+                <div class="marquee-item"><i class="fas fa-heartbeat"></i> Better Healthcare for Puducherry</div>
+                <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Quality Education for Every Child</div>
+                <div class="marquee-item"><i class="fas fa-industry"></i> Job Creation & Economic Growth</div>
+                <div class="marquee-item"><i class="fas fa-leaf"></i> Sustainable Development</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> Safety & Security for All Citizens</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h2>Serving Puducherry with Dedication</h2>
+                <p>Committed to the development and prosperity of our beloved Puducherry. Together, we will build a stronger, more prosperous future for all citizens. With the blessings of our people and the guidance of BJP's vision, we march towards progress.</p>
+                <div class="cta-buttons">
+                    <a href="https://www.facebook.com/NSaravanan" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-facebook"></i> Connect on Facebook
+                    </a>
+                    <a href="#goals" class="btn btn-secondary">
+                        <i class="fas fa-bullseye"></i> Our Vision
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section class="section" id="goals">
+            <h2 class="section-title">Our Vision for Puducherry</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><i class="fas fa-heartbeat"></i> Healthcare</h3>
+                    <p>Ensuring accessible and quality healthcare for all citizens. Expanding medical facilities, improving infrastructure, and bringing world-class health services to every corner of Puducherry.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <p>Building a robust education system that prepares our youth for the future. Modernizing schools, providing quality infrastructure, and ensuring no child is left behind in their educational journey.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-briefcase"></i> Employment</h3>
+                    <p>Creating job opportunities and fostering entrepreneurship. Supporting local businesses, attracting investments, and building a thriving economy that provides opportunities for all.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-road"></i> Infrastructure</h3>
+                    <p>Developing world-class infrastructure for modern Puducherry. Better roads, improved public transportation, and smart city initiatives for enhanced quality of life.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-users"></i> Social Welfare</h3>
+                    <p>Comprehensive welfare programs for all sections of society. Special focus on women empowerment, senior citizens, and uplifting the underprivileged communities.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-seedling"></i> Environment</h3>
+                    <p>Sustainable development with environmental conservation. Green initiatives, waste management, and preserving Puducherry's natural beauty for future generations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="section" id="media">
+            <h2 class="section-title">Connect & Engage</h2>
+            <div class="social-grid">
+                <div class="social-embed">
+                    <h3><i class="fab fa-facebook"></i> Facebook Videos</h3>
+                    <div class="fb-placeholder">
+                        <i class="fab fa-facebook"></i>
+                        <p><strong>Latest Videos & Updates</strong></p>
+                        <p>Follow us on Facebook for the latest videos, live updates, and community engagement.</p>
+                        <a href="https://www.facebook.com/NSaravanan" target="_blank" class="fb-link">
+                            <i class="fab fa-facebook"></i> Visit Facebook Page
+                        </a>
+                        <a href="https://www.facebook.com/Oulgaret-Saravanan" target="_blank" class="fb-link">
+                            <i class="fab fa-facebook"></i> Oulgaret Page
+                        </a>
+                    </div>
+                </div>
+                <div class="social-embed">
+                    <h3><i class="fab fa-facebook"></i> Photo Gallery</h3>
+                    <div class="fb-placeholder">
+                        <i class="fas fa-images"></i>
+                        <p><strong>Event Photos & Activities</strong></p>
+                        <p>View photos from community events, rallies, and public engagements on our Facebook pages.</p>
+                        <a href="https://www.facebook.com/NSaravanan/photos" target="_blank" class="fb-link">
+                            <i class="fas fa-camera"></i> View Photo Gallery
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; padding: 2rem; background: var(--white); border-radius: 15px; box-shadow: 0 6px 25px var(--shadow); border-left: 5px solid var(--saffron);">
+                <h3 style="font-family: 'Rajdhani', sans-serif; color: var(--green-dark); margin-bottom: 1rem;">
+                    <i class="fas fa-info-circle"></i> How to Embed Your Facebook Content
+                </h3>
+                <p style="line-height: 1.8; color: var(--text-dark);">
+                    To display your actual Facebook videos and photos here, you can use Facebook's embed plugins. Visit 
+                    <a href="https://developers.facebook.com/docs/plugins/" target="_blank" style="color: var(--saffron-dark); font-weight: 600;">Facebook for Developers</a> 
+                    to generate embed codes for your posts, videos, and page plugin. Simply replace the placeholder content above with the generated Facebook embed codes.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Chatbot -->
+    <button class="chatbot-button" onclick="toggleChatbot()">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> BJP Assistant</h3>
+            <button class="chatbot-close" onclick="toggleChatbot()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-content">
+                    नमस्ते! Welcome to N. Saravanan's official page. How can I assist you today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" id="chatInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <button class="chatbot-send" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>N. Saravanan is a dedicated leader of Bharatiya Janata Party, committed to serving the people of Puducherry with integrity and dedication.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/NSaravanan" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#goals"><i class="fas fa-chevron-right"></i> Our Vision</a></li>
+                    <li><a href="#media"><i class="fas fa-chevron-right"></i> Media Gallery</a></li>
+                    <li><a href="https://www.bjp.org" target="_blank"><i class="fas fa-chevron-right"></i> BJP Official</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Puducherry, India</li>
+                    <li><i class="fas fa-phone"></i> +91 XXX XXX XXXX</li>
+                    <li><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e5d51504a5f5d4a7e504d5f4c5f485f505f50105750">[email&#160;protected]</a></li>
+                    <li><i class="fas fa-clock"></i> Mon - Sat: 9AM - 6PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N. Saravanan - Bharatiya Janata Party. All rights reserved. | Jai Hind | Jai Bharat</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Chatbot functionality
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbotWindow');
+            chatWindow.classList.toggle('active');
+            if (chatWindow.classList.contains('active')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Simulate bot response
+            setTimeout(() => {
+                const botResponse = getBotResponse(message.toLowerCase());
+                addMessage(botResponse, 'bot');
+            }, 600);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.innerHTML = sender === 'bot' ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+            
+            const content = document.createElement('div');
+            content.className = 'message-content';
+            content.textContent = text;
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            messagesContainer.appendChild(messageDiv);
+            
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function getBotResponse(message) {
+            const responses = {
+                'hello': 'Hello! How can I help you today?',
+                'hi': 'Hi there! What would you like to know?',
+                'namaste': 'Namaste! How may I assist you?',
+                'goals': 'Our main goals include healthcare development, quality education, job creation, infrastructure improvement, social welfare, and environmental conservation.',
+                'healthcare': 'We are committed to providing accessible and quality healthcare for all citizens of Puducherry with improved medical facilities and infrastructure.',
+                'education': 'Quality education for every child is our priority. We focus on modernizing schools and ensuring no child is left behind.',
+                'jobs': 'We are working on creating employment opportunities through supporting local businesses, attracting investments, and fostering entrepreneurship.',
+                'contact': 'You can reach us through our Facebook pages: NSaravanan or Oulgaret Saravanan. You can also visit our office or call us during working hours.',
+                'facebook': 'Follow us on Facebook at NSaravanan and Oulgaret Saravanan for latest updates, videos, and photos!',
+                'bjp': 'Bharatiya Janata Party (BJP) is committed to development and progress with the principle of Sabka Saath, Sabka Vikas, Sabka Vishwas.',
+                'help': 'I can answer questions about our goals, healthcare initiatives, education programs, employment opportunities, contact information, and more. What would you like to know?'
+            };
+
+            for (let key in responses) {
+                if (message.includes(key)) {
+                    return responses[key];
+                }
+            }
+
+            return "Thank you for your message! For detailed information, please visit our Facebook page or contact us directly. How else can I help you?";
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease-out';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    observer.unobser
