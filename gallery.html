@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Memories Collection</title>
+ <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       body {
+            font-family: 'Hind', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+     
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .filter-btn {
+            background: white;
+            color: #138808;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .filter-btn:hover {
+            background: #FF9933;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .filter-btn.active {
+            background: #FF9933;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Search Bar */
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1.4s ease;
+	margin-top: 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+            animation: fadeIn 1.6s ease;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            background: white;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 30px 20px 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-item-info {
+            transform: translateY(0);
+        }
+
+        .gallery-item-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .gallery-item-info p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.95);
+            color: #667eea;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .lightbox-info h3 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .lightbox-info p {
+            color: #666;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: white;
+            color: #667eea;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            color: #667eea;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            padding: 60px 20px;
+            display: none;
+        }
+
+        .no-results.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 2px solid rgba(255,255,255,0.2);
+        }
+
+        footer p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+ 
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .gallery-item img {
+                height: 250px;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .prev-btn {
+                left: 10px;
+            }
+
+            .next-btn {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+.photo-box
+{
+	text-align: center;
+	justify-content: center;
+	color:  #138808;
+}
+    </style>
+</head>
+<body>
+  
+   
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="bjp-flag">
+                    <div class="bjp-flag-inner">
+                        <i class="fas fa-om bjp-lotus"></i>
+                    </div>
+                </div>
+                <div class="header-text">
+                    <h1>N. SARAVANAN</h1>
+                    <p>Bharatiya Janata Party - Puducherry</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#goals"><i class="fas fa-bullseye"></i> Goals</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-photo-video"></i> Media</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+  <div class="container">     
+<!-- Header -->
+        <div class="photo-box">
+            <h1>✨ Photo Gallery</h1>
+            <p>Explore our beautiful collection of memories</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search photos...">
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="all">All Photos</button>
+            <button class="filter-btn" data-category="nature">Nature</button>
+            <button class="filter-btn" data-category="city">City</button>
+            <button class="filter-btn" data-category="people">People</button>
+            <button class="filter-btn" data-category="food">Food</button>
+            <button class="filter-btn" data-category="travel">Travel</button>
+        </div>
+ <!-- Gallery Grid -->
+        <div class="gallery" id="gallery">
+            <!-- Nature Photos -->
+            <div class="gallery-item" data-category="nature" data-title="Mountain Sunrise" data-description="Beautiful sunrise over the mountains">
+                <img src="images/1.jpeg" alt="Mountain Sunrise">
+                <span class="category-tag">Nature</span>
+                <div class="gallery-item-info">
+                    <h3>Mountain Sunrise</h3>
+                    <p>Beautiful sunrise over the mountains</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="nature" data-title="Forest Path" data-description="Peaceful walk through the forest">
+                <img src="images/2.jpeg" alt="Forest Path">
+                <span class="category-tag">Nature</span>
+                <div class="gallery-item-info">
+                    <h3>Forest Path</h3>
+                    <p>Peaceful walk through the forest</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="nature" data-title="Ocean Waves" data-description="Calming ocean waves at sunset">
+                <img src="images/3.jpeg" alt="Ocean Waves">
+                <span class="category-tag">Nature</span>
+                <div class="gallery-item-info">
+                    <h3>Ocean Waves</h3>
+                    <p>Calming ocean waves at sunset</p>
+                </div>
+            </div>
+
+            <!-- City Photos -->
+            <div class="gallery-item" data-category="city" data-title="City Lights" data-description="Vibrant city nightlife">
+                <img src="images/4.jpeg" alt="City Lights">
+                <span class="category-tag">City</span>
+                <div class="gallery-item-info">
+                    <h3>City Lights</h3>
+                    <p>Vibrant city nightlife</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="city" data-title="Modern Architecture" data-description="Contemporary building design">
+                <img src="images/5.jpeg" alt="Modern Architecture">
+                <span class="category-tag">City</span>
+                <div class="gallery-item-info">
+                    <h3>Modern Architecture</h3>
+                    <p>Contemporary building design</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="city" data-title="Urban Street" data-description="Busy city street scene">
+                <img src="images/6.jpeg" alt="Urban Street">
+                <span class="category-tag">City</span>
+                <div class="gallery-item-info">
+                    <h3>Urban Street</h3>
+                    <p>Busy city street scene</p>
+                </div>
+            </div>
+
+            <!-- People Photos -->
+            <div class="gallery-item" data-category="people" data-title="Celebration" data-description="Joyful moments together">
+                <img src="images/7.jpeg" alt="Celebration">
+                <span class="category-tag">People</span>
+                <div class="gallery-item-info">
+                    <h3>Celebration</h3>
+                    <p>Joyful moments together</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="people" data-title="Friendship" data-description="Friends enjoying time together">
+                <img src="images/8.jpeg" alt="Friendship">
+                <span class="category-tag">People</span>
+                <div class="gallery-item-info">
+                    <h3>Friendship</h3>
+                    <p>Friends enjoying time together</p>
+                </div>
+            </div>
+
+            <!-- Food Photos -->
+            <div class="gallery-item" data-category="food" data-title="Delicious Meal" data-description="Gourmet dining experience">
+                <img src="images/9.jpeg" alt="Delicious Meal">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Delicious Meal</h3>
+                    <p>Gourmet dining experience</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/10.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+
+            <!-- Travel Photos -->
+            <div class="gallery-item" data-category="travel" data-title="Adventure Awaits" data-description="Exploring new destinations">
+                <img src="images/11.jpeg" alt="Adventure">
+                <span class="category-tag">Travel</span>
+                <div class="gallery-item-info">
+                    <h3>Adventure Awaits</h3>
+                    <p>Exploring new destinations</p>
+                </div>
+            </div>
+
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/12.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/13.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/14.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/15.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/16.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/17.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/18.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/19.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/20.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/21.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/22.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/23.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/24.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/25.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/26.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/27.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/28.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/29.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/30.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/31.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/32.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/33.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/34.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/35.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+ <div class="gallery-item" data-category="food" data-title="Fresh Breakfast" data-description="Healthy morning start">
+                <img src="images/36.jpeg" alt="Fresh Breakfast">
+                <span class="category-tag">Food</span>
+                <div class="gallery-item-info">
+                    <h3>Fresh Breakfast</h3>
+                    <p>Healthy morning start</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="travel" data-title="Historic Landmark" data-description="Ancient architecture and culture">
+                <img src="images/24.jpeg" alt="Historic Landmark">
+                <span class="category-tag">Travel</span>
+                <div class="gallery-item-info">
+                    <h3>Historic Landmark</h3>
+                    <p>Ancient architecture and culture</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults">
+            <p>😔 No photos found matching your search</p>
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <button class="close-btn" onclick="closeLightbox()">&times;</button>
+                <button class="nav-btn prev-btn" onclick="changeImage(-1)">❮</button>
+                <img src="" alt="Gallery Image" id="lightboxImage">
+                <button class="nav-btn next-btn" onclick="changeImage(1)">❯</button>
+                <div class="lightbox-info" id="lightboxInfo">
+                    <h3 id="lightboxTitle"></h3>
+                    <p id="lightboxDescription"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Photo Gallery | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Gallery items and current index
+        let currentImageIndex = 0;
+        let visibleItems = [];
+
+        // Get all gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const searchBox = document.getElementById('searchBox');
+        const noResults = document.getElementById('noResults');
+        const gallery = document.getElementById('gallery');
+
+        // Update visible items array
+        function updateVisibleItems() {
+            visibleItems = Array.from(galleryItems).filter(item => 
+                item.style.display !== 'none'
+            );
+        }
+
+        // Filter functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+                let visibleCount = 0;
+
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    noResults.classList.add('active');
+                } else {
+                    noResults.classList.remove('active');
+                }
+
+                updateVisibleItems();
+                searchBox.value = '';
+            });
+        });
+
+        // Search functionality
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            let visibleCount = 0;
+
+            galleryItems.forEach(item => {
+                const title = item.getAttribute('data-title').toLowerCase();
+                const description = item.getAttribute('data-description').toLowerCase();
+                const category = item.getAttribute('data-category').toLowerCase();
+
+                if (title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResults.classList.add('active');
+            } else {
+                noResults.classList.remove('active');
+            }
+
+            updateVisibleItems();
+        });
+
+        // Initialize visible items
+        updateVisibleItems();
+
+        // Lightbox functionality
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const title = this.getAttribute('data-title');
+                const description = this.getAttribute('data-description');
+                
+                openLightbox(img.src, title, description);
+            });
+        });
+
+        function openLightbox(src, title, description) {
+            updateVisibleItems();
+            
+            // Find current index in visible items
+            const clickedSrc = src;
+            currentImageIndex = visibleItems.findIndex(item => 
+                item.querySelector('img').src === clickedSrc
+            );
+
+            document.getElementById('lightboxImage').src = src;
+            document.getElementById('lightboxTitle').textContent = title;
+            document.getElementById('lightboxDescription').textContent = description;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = visibleItems.length - 1;
+            } else if (currentImageIndex >= visibleItems.length) {
+                currentImageIndex = 0;
+            }
+            
+            const currentItem = visibleItems[currentImageIndex];
+            const img = currentItem.querySelector('img');
+            const title = currentItem.getAttribute('data-title');
+            const description = currentItem.getAttribute('data-description');
+            
+            document.getElementById('lightboxImage').src = img.src;
+            document.getElementById('lightboxTitle').textContent = title;
+            document.getElementById('lightboxDescription').textContent = description;
+        }
+
+        // Close lightbox on background click
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'scaleIn 0.5s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        galleryItems.forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

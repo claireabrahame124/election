@@ -377,6 +377,7 @@
             box-shadow: 0 6px 25px var(--shadow);
             min-height: 500px;
             border: 2px solid var(--green);
+
         }
 
         .social-embed h3 {
