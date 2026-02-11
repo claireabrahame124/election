@@ -646,7 +646,7 @@ letter-spacing: 1px;
         }
 
         .footer-content {
-            max-width: 1800px;
+            max-width: 100%;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -798,3 +798,4 @@ letter-spacing: 1px;
 	margin-bottom: 20px;
 
 	} -->
+
