@@ -278,19 +278,7 @@
             display: block;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            color: white;
-            padding: 30px 20px;
-            margin-top: 40px;
-            border-top: 2px solid rgba(255,255,255,0.2);
-        }
-
-        footer p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
+        
 
         /* Animations */
         @keyframes fadeIn {
@@ -411,7 +399,8 @@
 	justify-content: center;
 	color:  #138808;
 }
-    </style>
+ 
+   </style>
 </head>
 <body>
   
@@ -440,6 +429,31 @@
             </nav>
         </div>
     </header>
+ <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee">
+            <div class="marquee-content">
+                <div class="marquee-item"><i class="fas fa-star"></i> Development for All - Sabka Saath, Sabka Vikas</div>
+                <div class="marquee-item"><i class="fas fa-hands-helping"></i> Empowering Local Communities</div>
+                <div class="marquee-item"><i class="fas fa-heartbeat"></i> Better Healthcare for Puducherry</div>
+                <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Quality Education for Every Child</div>
+                <div class="marquee-item"><i class="fas fa-industry"></i> Job Creation & Economic Growth</div>
+                <div class="marquee-item"><i class="fas fa-leaf"></i> Sustainable Development</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> Safety & Security for All Citizens</div>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <div class="marquee-item"><i class="fas fa-star"></i> Development for All - Sabka Saath, Sabka Vikas</div>
+                <div class="marquee-item"><i class="fas fa-hands-helping"></i> Empowering Local Communities</div>
+                <div class="marquee-item"><i class="fas fa-heartbeat"></i> Better Healthcare for Puducherry</div>
+                <div class="marquee-item"><i class="fas fa-graduation-cap"></i> Quality Education for Every Child</div>
+                <div class="marquee-item"><i class="fas fa-industry"></i> Job Creation & Economic Growth</div>
+                <div class="marquee-item"><i class="fas fa-leaf"></i> Sustainable Development</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> Safety & Security for All Citizens</div>
+            </div>
+        </div>
+    </div>
+
+
   <div class="container">     
 <!-- Header -->
         <div class="photo-box">
@@ -797,10 +811,42 @@
         </div>
 
         <!-- Footer -->
-        <footer>
-            <p>© 2026 Photo Gallery | All Rights Reserved</p>
-        </footer>
-    </div>
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>N. Saravanan is a dedicated leader of Bharatiya Janata Party, committed to serving the people of Puducherry with integrity and dedication.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/NSaravanan" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#goals"><i class="fas fa-chevron-right"></i> Our Vision</a></li>
+                    <li><a href="#media"><i class="fas fa-chevron-right"></i> Media Gallery</a></li>
+                    <li><a href="https://www.bjp.org" target="_blank"><i class="fas fa-chevron-right"></i> BJP Official</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Oulgaret, Puducherry, India</li>
+                    <li><i class="fas fa-phone"></i> +91 97899 16979</li>
+                    <li><i class="fas fa-envelope"></i> oulgaretsaravanan@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Mon - Sat: 9AM - 9PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 N. Saravanan - Bharatiya Janata Party. All rights reserved. | Jai Hind | Jai Bharat</p>
+        </div>
+    </footer>
+
 
     <!-- JavaScript -->
     <script>

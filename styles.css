@@ -218,6 +218,9 @@
             border: 3px solid var(--saffron);
             position: relative;
             overflow: hidden;
+letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
         }
 
         .hero::before {
@@ -235,6 +238,9 @@
         .hero-content {
             position: relative;
             z-index: 1;
+letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
         }
 
         .hero h2 {
@@ -308,6 +314,9 @@
             font-weight: 700;
             position: relative;
             padding-bottom: 1rem;
+letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
         }
 
         .section-title::after {
@@ -777,6 +786,9 @@ margin-top: 0;
 	margin-bottom: 50px;
 font-family: 'Rajdhani', sans-serif;
 font-size: 2.5rem;
+letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
 }
 
 <!-- #daba-text {
